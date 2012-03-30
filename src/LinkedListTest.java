@@ -12,7 +12,7 @@ public class LinkedListTest {
 
 		LinkedList mylist= new LinkedList();
 		
-		int[] a = new int[] {50,20,30,70,80,90,100};
+		int[] a = new int[] {5,56,74,798,522,565,56565,5565656,20,30,70,80,90,100};
 		LNode[] nodes = new LNode[a.length];
 		
 		for(int i=0;i<a.length;i++)
@@ -27,11 +27,11 @@ public class LinkedListTest {
 		
 		//mylist.add(a);
 		
-		System.out.println("\n\n");
+		
 		
 		System.out.print("mylist : ");
 		LinkedList.printList(mylist);
-		
+		System.out.println("\n\n");
 		mylist = LinkedList.reverseList(mylist);
 		System.out.print("mylist : ");
 		LinkedList.printList(mylist);
