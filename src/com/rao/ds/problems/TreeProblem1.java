@@ -1,6 +1,44 @@
 //package com.rao.ds.problems;
 import java.util.ArrayList;
 
+/*
+Problem : 
+We are given a binary search tree; we need to find out its border.
+
+So, if the binary tree is
+
+           10
+       /         \
+     50           150
+    /  \            /    \
+  25    75     200    20
+ / \           /            / \
+15 35    120      155 250
+It should print out 50 25 15 35 120 155 250 20 150 10.
+
+If the binary tree is
+
+               10
+           /         \
+         50           150
+        /    \         /
+      25     75     200
+     / \       / \
+    15 35  65 30  
+It should be like 50 25 15 35 65 30 200 150 10.
+
+How can this be done? Does generalising this for a binary tree make the problem any harder?
+
+Any help through links will also be appreciated.
+
+P.S.: please see that the pattern does not start from root but from the left (in this case). It might also start with right, but it always ends with the root.
+
+Source: http://stackoverflow.com/questions/3753928/finding-border-of-a-binary-tree
+
+
+
+*/
+
 
 class BNode{
 BNode left;
@@ -76,7 +114,7 @@ System.out.print(root.data+" ");
 }
 
 
-public static void printLeafNodes(BNode root)
+public static void  printLeafNodes(BNode root)
 {
 
 if(root!=null)
@@ -114,19 +152,11 @@ public static ArrayList<BNode> getLeftSideNodes(BNode root)
 {
 
 ArrayList<BNode> al = new ArrayList<BNode> ();
-
-/*
-while(root.left!=null)
-{
-al.add(root);
-root=root.left;
-}
-*/
-
+BNode oroot=root;
 while(true)
 {
 
-if(root!=null)
+if(root!=null && !isLeafNode(root)) 
 al.add(root);
 else
 break;
@@ -142,6 +172,7 @@ break;
 }
 
 
+al.remove(0);
 
 for(BNode b : al)
 {
@@ -160,7 +191,7 @@ ArrayList<BNode> al = new ArrayList<BNode>();
 while(true)
 {
 
-if(root!=null)
+if(root!=null && !isLeafNode(root))
 al.add(root);
 else
 break;
@@ -189,6 +220,26 @@ System.out.print(b.data+" ");
 */
 
 return al;
+}
+
+
+public static void printBorderNodes(BTree tree)
+{
+if(tree.root!=null)
+{
+
+ArrayList<BNode> bordernodes = new ArrayList<BNode> ();
+
+ArrayList<BNode> leftnodes = getLeftSideNodes(tree.root);
+printLeafNodes(tree.root);
+
+ArrayList<BNode> rightNodes = getRightSideNodes(tree.root);
+ 
+
+
+
+}
+
 }
 
 }
@@ -250,9 +301,9 @@ System.out.println();
 BTree.printTreePostOrder(btree.root);
 
 System.out.println();
-
+/*
 System.out.print("Leaf Nodes : ");
-ArrayList<BNode> leafNodes = BTree.printLeafNodes(btree.root);
+BTree.printLeafNodes(btree.root);
 
 System.out.println();
 
@@ -263,12 +314,14 @@ System.out.println("\n Right Side Nodes : ");
 ArrayList<BNode> rtree = BTree.getRightSideNodes(btree.root);
 
 System.out.println();
+*/
+
 
 System.out.println("---------------SOLUTION---------------");
+System.out.print("Border Nodes :"); 
+BTree.printBorderNodes(btree);
 
-
-
-System.out.println("Helladsghkhakdgjs");
+System.out.println();
 }
 
 
